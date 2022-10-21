@@ -1,12 +1,13 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
 import Banner from "./dcc-banner";
+import Choice from "./dcc-choice";
 
 type Props = {};
 
 const DccOverlay: React.FC<Props> = (props) => {
     const [showBanner, setShowBanner] = useState(true);
-    const [showChioice, setShowChoice] = useState(false);
+    const [showChioice, setShowChoice] = useState(true);
 
     const handleLog = (x) => {
         console.log(x);
@@ -23,7 +24,7 @@ const DccOverlay: React.FC<Props> = (props) => {
                 />
             )}
 
-            {showChioice && <p>choiche</p>}
+            {showChioice && <Choice />}
         </div>
     );
 };
