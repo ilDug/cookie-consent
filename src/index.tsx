@@ -2,13 +2,23 @@ import Cookies from "js-cookie";
 import { filter, map, take, tap } from "rxjs";
 import { setConsentInCookies, activateScripts } from "./controllers";
 import React from "react";
-import "./styles.scss";
+// import ReactDOM from "react-dom";
+    import { createRoot } from "react-dom/client";
+import "./styles/styles.scss";
 
-import Banner from "./components/dcc-banner";
+import DccApp from './components/dcc-container'
 // import { Modal } from 'bootstrap'
 
 window.onload = async () => {
     console.log("DAG cookie-consent starting...");
+
+    /** creazione del container */
+    const dcc: HTMLDivElement = document.createElement("div");
+    dcc.id = "dcc-container";
+    document.body.append(dcc);
+    const root = createRoot(dcc!); 
+    root.render(<DccApp />);
+
 
     // const cookieName = "dccenabled";
     // const scriptAttr = "dcc-script";

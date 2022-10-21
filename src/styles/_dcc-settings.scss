@@ -1,0 +1,87 @@
+@use "variables" as v;
+
+
+
+#dcc-settings {
+    max-width: 600px;
+    background: v.$color-white;
+    position: relative;
+    border-radius: 10px;
+
+    // max-height: 80vh;
+    // overflow-y: auto;
+
+    #dcc-s-body {
+        padding: 1rem;
+
+        #dcc-s-close {
+            position: absolute;
+            top: 0.75rem;
+            right: 0.75rem;
+            cursor: pointer;
+            svg {
+                width: 1rem;
+                height: 1rem;
+                fill: v.$color-primary;
+            }
+        }
+    }
+
+    .setting-box {
+        .s-box-header,
+        .s-box-content {
+            padding: 1rem 0.5rem;
+        }
+
+        .s-box-header {
+            background-color: lighten(v.$color-light, 7%);
+            margin-top: 1rem;
+
+            display: flex;
+            flex-wrap: nowrap;
+            &.open {
+                border-radius: 8px 8px 0 0;
+            }
+
+            &.closed {
+                border-radius: 8px 8px 8px 8px;
+            }
+        }
+
+        .s-box-content {
+            background-color: lighten(v.$color-light, 10%);
+            border-radius: 0 0 8px 8px;
+            overflow: hidden;
+
+            &.open {
+                height: auto;
+            }
+
+            &.closed {
+                height: 0;
+                display: none;
+            }
+        }
+
+
+    }
+
+    .box {
+        padding: 0.5rem;
+        border: 1px solid lighten(v.$color-light, 8%);
+        border-radius: 8px;
+        margin-top: 1rem;
+
+    }
+    #dcc-s-content {
+    max-height: 80vh;
+    overflow-y: auto;
+
+    }
+
+    #dcc-s-actions {
+        margin-top: 1rem;
+        border-top: 1px solid lighten(v.$color-light, 7%);
+        display: flex;
+    }
+}

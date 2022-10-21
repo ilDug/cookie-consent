@@ -1,0 +1,105 @@
+@use "variables" as v;
+
+#dcc-overlay {
+    #dcc-banner {
+
+        position: absolute;
+
+
+
+        #dcc-banner-body {
+            background: v.$color-white;
+            position: relative;
+            margin: 0 auto;
+            padding: 1.5rem;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-around;
+
+            flex-wrap: nowrap;
+
+            #dcc-banner-close {
+                position: absolute;
+                top: 0.75rem;
+                right: 0.75rem;
+                cursor: pointer;
+                svg {
+                    width: 1rem;
+                    height: 1rem;
+                    fill: v.$color-primary;
+                }
+            }
+
+            #dcc-banner-content {
+                // flex: 1 1 75%;
+
+                #dcc-banner-title {
+                    h3 {
+                        margin-top: 0;
+                    }
+
+                    #dcc-banner-icon {
+                        float: left;
+                        margin-right: 1rem;
+                        svg {
+                            height: 2rem;
+                            width: 2rem;
+                            fill: v.$color-primary;
+                        }
+                    }
+                }
+                #dcc-banner-text {
+                }
+            }
+
+            #dcc-banner-actions {
+                display: flex;
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+
+    }
+}
+
+// RESPONSIVE *******************************************
+// @media (max-width: 575.9px ){
+
+@mixin banner-xs {
+    #dcc-banner {
+        bottom: 0rem;
+        right: 0rem;
+        left: 0rem;
+        margin: 0 auto;
+        #dcc-banner-body {
+            flex-direction: column;
+        }
+    }
+}
+
+@mixin banner-sm {
+    #dcc-banner {
+        bottom: 1rem;
+        right: 1rem;
+        left: 1rem;
+        margin: 0 auto;
+        #dcc-banner-body {
+            max-width: 500px;
+            flex-direction: row;
+        }
+    }
+}
+
+@mixin banner-md {
+    #dcc-banner {
+        bottom: 1rem;
+        right: 1rem;
+        left: 1rem;
+        margin: 0 auto;
+        #dcc-banner-body {
+            max-width: 700px;
+            flex-direction: row;
+        }
+    }
+}

@@ -1,5 +1,6 @@
 body {
     background-color: rgb(241, 217, 217);
+    min-height: 200vh;
 }
 
 #dcc-banner {
@@ -9,16 +10,16 @@ body {
     right: 0;
     z-index: 99;
 
-    .backdrop {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: rgba(128, 128, 128, 0.5);
-        z-index: 999;
-        // display: none;
-    }
+    // .backdrop {
+    //     position: fixed;
+    //     top: 0;
+    //     left: 0;
+    //     right: 0;
+    //     bottom: 0;
+    //     background-color: rgba(128, 128, 128, 0.5);
+    //     z-index: 999;
+    //     // display: none;
+    // }
     .dcc-banner-content{
         padding: 1rem;
         padding-top: 2rem;
