@@ -1,13 +1,13 @@
 import Cookies from "js-cookie";
 import { filter, map, take, tap } from "rxjs";
-import { setConsentInCookies, activateScripts } from "./controllers";
+// import { setConsentInCookies, activateScripts } from "./controllers";
+
 import React from "react";
 // import ReactDOM from "react-dom";
-    import { createRoot } from "react-dom/client";
+import { createRoot } from "react-dom/client";
 import "./styles/styles.scss";
 
-import DccApp from './components/dcc-container'
-// import { Modal } from 'bootstrap'
+import DccApp from "./components/dcc-app";
 
 window.onload = async () => {
     console.log("DAG cookie-consent starting...");
@@ -16,9 +16,8 @@ window.onload = async () => {
     const dcc: HTMLDivElement = document.createElement("div");
     dcc.id = "dcc-container";
     document.body.append(dcc);
-    const root = createRoot(dcc!); 
-    root.render(<DccApp />);
-
+    const root = createRoot(dcc!);
+    root.render(<DccApp consentCookieName="dcc" />);
 
     // const cookieName = "dccenabled";
     // const scriptAttr = "dcc-script";
