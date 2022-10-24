@@ -1,7 +1,8 @@
 import Cookies from 'js-cookie';
 import { CookieCategories, CookiePreference, CookiesCategory } from '../classes';
-import { Consent } from '../classes/cookies-consent';
+import { Consent } from '../classes';
 import { CATEGORIES_DEFAULTS } from '../lib/categories'
+import { v4 as uuidv4 } from 'uuid';
 
 
 export class ConsentCtrl {
@@ -29,9 +30,23 @@ export class ConsentCtrl {
     }
 
 
+    get defaultPreferences(): CookiePreference {
+        let prefereces: CookiePreference = {};
+        for (const cat in CATEGORIES_DEFAULTS) {
+            prefereces[cat] = CATEGORIES_DEFAULTS[cat].consent;
+        }
+        return prefereces;
+    }
+
+
     get preferences(): CookiePreference {
         const consent = this.readConsentFromCookies()
         return consent ? consent.preferences : null
+    }
+
+
+    get defaultCategories(): CookieCategories {
+        return { ...CATEGORIES_DEFAULTS }
     }
 
     get categories(): CookieCategories {
@@ -62,6 +77,20 @@ export class ConsentCtrl {
         return false;
     }
 
+
+    fromPreferenceToConsent(preferences: CookiePreference): Consent {
+        let c: Consent = {
+            uuid: uuidv4(),
+            ip: null,
+            date: new Date(),
+            url: window.location.href,
+            user_agent: window.navigator.userAgent ?? null,
+            language: window.navigator.language ?? null,
+            preferences: preferences,
+            policy_version: this.currentPolicyVersion,
+        }
+        return c
+    }
 
 
 }

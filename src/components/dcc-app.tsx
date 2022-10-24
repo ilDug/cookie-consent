@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import { CookiePreference } from "../classes";
 import { ConsentCtrl } from "../controllers/";
 import DccOverlay from "./dcc-overlay";
+
+
 type Props = { consentCookieName: string };
 
 const DccApp: React.FC<Props> = ({ consentCookieName }) => {
@@ -15,7 +17,26 @@ const DccApp: React.FC<Props> = ({ consentCookieName }) => {
         setShow(main.shouldShowBanner());
     }, []);
 
-    const handleAccetp = (consent: CookiePreference | "ALL" | "NONE") => {
+    const handleAccetp = (prefs: CookiePreference | "ALL" | "NONE") => {
+        let preferences: CookiePreference = {};
+        switch (prefs) {
+            case "ALL":
+                for (const key in main.defaultPreferences) {
+                    preferences[key] = true;
+                }
+                break;
+
+            case "NONE":
+                for (const key in main.defaultPreferences) {
+                    preferences[key] = false;
+                }
+                break;
+            default:
+                preferences = prefs;
+                break;
+        }
+
+        let consent = main.fromPreferenceToConsent(preferences);
         console.log(consent);
     };
 
