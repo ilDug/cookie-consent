@@ -1,6 +1,6 @@
 import { CookieCategories } from "../classes";
 
-export const CATEGORIES: CookieCategories = {
+export const CATEGORIES_DEFAULTS: CookieCategories = {
     'technical': {
         title: "Cookies necessari / tecnici",
         description: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Provident consequatur odio id dolorum sint distinctio ducimus quis reprehenderit doloremque eius enim quae porro perspiciatis, ratione quisquam officia dolorem deleniti obcaecati!",
