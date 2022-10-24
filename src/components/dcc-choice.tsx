@@ -1,18 +1,20 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
+import { CATEGORIES } from "../lib/categories";
 import CookieCategory from "./choice/cookie-category";
 
 type Props = {};
 
 const Choice: React.FC<Props> = (props) => {
     const settings = ["Cookies necessari / tecnici ", "Misurazione", "Targeting e Pubblicità"];
-    const categories = {
-        "Cookies necessari / tecnici ":
-            "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Provident consequatur odio id dolorum sint distinctio ducimus quis reprehenderit doloremque eius enim quae porro perspiciatis, ratione quisquam officia dolorem deleniti obcaecati!",
-        "Misurazione ":
-            "Quae delectus cupiditate ipsa unde molestias, accusamus dolor illo voluptatum praesentium magni deserunt voluptates consectetur ipsum quas, odio ea iusto temporibus laboriosam. Doloribus consectetur quam dolor ab nemo quos neque?",
-        "Targeting e Pubblicità":
-            "Enim iusto, nostrum aliquid optio, repellat assumenda labore deleniti, repellendus laborum cumque eaque quasi incidunt pariatur consequatur nemo aut sed eligendi. Cumque quibusdam, vitae dolorem quos ducimus placeat suscipit eaque.",
+
+    const [consents, setConsents] = useState(CATEGORIES);
+
+    const handleConsentChange = (_category: string, consent: boolean) => {
+        let c = { ...consents };
+        c[_category].consent = consent;
+        setConsents(c);
+        console.log(consents);
     };
 
     return (
@@ -37,12 +39,14 @@ const Choice: React.FC<Props> = (props) => {
                         illo nostrum beatae.
                     </p>
                     <React.Fragment>
-                        {/* {settings.map((s, i) => (
-
-                        ))} */}
-                        {Object.entries(categories).map(([cat, descr], i) => (
-                            <CookieCategory title={cat} index={i} key={i}>
-                                <p>{descr}</p>
+                        {Object.entries(consents).map(([name, cat], i) => (
+                            <CookieCategory
+                                cat={cat}
+                                index={i}
+                                key={name}
+                                consentChange={(consent) => handleConsentChange(name, consent)}
+                            >
+                                <p>{cat.description}</p>
                             </CookieCategory>
                         ))}
                     </React.Fragment>

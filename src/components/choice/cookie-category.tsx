@@ -1,9 +1,15 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
+import { CookiesCategory } from "../../classes";
 
-type Props = { title: string; index?: number; children?: React.ReactNode };
+type Props = {
+    cat: CookiesCategory;
+    consentChange: (_: boolean) => void;
+    index?: number;
+    children?: React.ReactNode;
+};
 
-const CookieCategory: React.FC<Props> = ({ title, index, children }) => {
+const CookieCategory: React.FC<Props> = ({ cat, index, consentChange, children }) => {
     const [details, setDetails] = useState(false);
     const handleId = `handle-${index}`;
     const toggleId = `toggle-${index}`;
@@ -22,12 +28,16 @@ const CookieCategory: React.FC<Props> = ({ title, index, children }) => {
                     />
                     <label htmlFor={handleId}> </label>
                 </span>
-                <span className="grow">
-                    {index} - {title}
-                </span>
+                <span className="grow">{cat.title}</span>
 
                 <span className="toggle">
-                    <input type="checkbox" id={toggleId} />
+                    <input
+                        type="checkbox"
+                        checked={cat.consent}
+                        disabled={!cat.editable}
+                        id={toggleId}
+                        onChange={(e) => consentChange(e.target.checked)}
+                    />
                     <label htmlFor={toggleId}>Toggle</label>
                 </span>
             </div>
