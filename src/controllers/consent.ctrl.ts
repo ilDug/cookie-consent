@@ -22,6 +22,8 @@ export class ConsentCtrl {
 
         const raw = decodeURIComponent((window.atob(b64)))
         const consent: Consent = JSON.parse(raw)
+        console.log(consent);
+
         return consent
     }
 
@@ -29,7 +31,7 @@ export class ConsentCtrl {
     setConsentInCookies(c: Consent): boolean {
         const raw = JSON.stringify(c)
         const b64 = window.btoa((encodeURIComponent(raw)));
-        const x = Cookies.set(this.consentCookieName, '1');
+        const x = Cookies.set(this.consentCookieName, b64);
         return !!x;
     }
 
@@ -40,7 +42,8 @@ export class ConsentCtrl {
     get defaultPreferences(): CookiePreference {
         let prefereces: CookiePreference = {};
         for (const cat in CATEGORIES_DEFAULTS) {
-            prefereces[cat] = CATEGORIES_DEFAULTS[cat].consent;
+            const val = CATEGORIES_DEFAULTS[cat].consent
+            prefereces[cat] = val;
         }
         return prefereces;
     }
@@ -59,7 +62,7 @@ export class ConsentCtrl {
      * lle categorie di default
      */
     get defaultCategories(): CookieCategories {
-        return { ...CATEGORIES_DEFAULTS }
+        return JSON.parse(JSON.stringify(CATEGORIES_DEFAULTS)) as CookieCategories
     }
 
     /**
@@ -67,10 +70,12 @@ export class ConsentCtrl {
      * se non esiste ritorna le categorie di default
      */
     get categories(): CookieCategories {
-        const pref = this.preferences
-        if (!pref) return CATEGORIES_DEFAULTS;
+        const raw = JSON.stringify(CATEGORIES_DEFAULTS)
 
-        let categories = { ...CATEGORIES_DEFAULTS }
+        const pref = this.preferences
+        if (!pref) return JSON.parse(raw);
+
+        let categories = JSON.parse(raw);
         for (const cat in pref) {
             categories[cat].consent = pref[cat]
         }
@@ -94,7 +99,7 @@ export class ConsentCtrl {
         if (consent.policy_version < this.currentPolicyVersion) return true;
 
         /** se sono passati i giorni di frequenza di aggironamento */
-        const deltaMilliseconds: number = (new Date()).getTime() - consent.date.getTime()
+        const deltaMilliseconds: number = (new Date()).getTime() - (new Date(consent.date)).getTime()
         if (deltaMilliseconds > this.frequency) return true;
 
         /** altrimenti non lo mostra */
