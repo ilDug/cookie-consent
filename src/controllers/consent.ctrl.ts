@@ -6,7 +6,11 @@ import { v4 as uuidv4 } from 'uuid';
 
 
 export class ConsentCtrl {
-    constructor(public consentCookieName: string, public currentPolicyVersion?: Date) {
+    constructor(
+        public consentCookieName: string,
+        public frequency: number,
+        public currentPolicyVersion?: Date
+    ) {
     }
 
     /**
@@ -30,6 +34,9 @@ export class ConsentCtrl {
     }
 
 
+    /**
+     * le preferenze di default (tutte false tranne per i tecnici)
+     */
     get defaultPreferences(): CookiePreference {
         let prefereces: CookiePreference = {};
         for (const cat in CATEGORIES_DEFAULTS) {
@@ -39,16 +46,26 @@ export class ConsentCtrl {
     }
 
 
+    /***
+     * le preferenze salvate nel cookie tecnico
+     */
     get preferences(): CookiePreference {
         const consent = this.readConsentFromCookies()
         return consent ? consent.preferences : null
     }
 
 
+    /**
+     * lle categorie di default
+     */
     get defaultCategories(): CookieCategories {
         return { ...CATEGORIES_DEFAULTS }
     }
 
+    /**
+     * ritorna le categorie salvate nei cookie tecnico
+     * se non esiste ritorna le categorie di default
+     */
     get categories(): CookieCategories {
         const pref = this.preferences
         if (!pref) return CATEGORIES_DEFAULTS;
@@ -66,18 +83,28 @@ export class ConsentCtrl {
      * e restituisce la lista compilata delle categorie disponibili 
      **/
     shouldShowBanner(): boolean {
+        /** se non esistono preferenza già salvate */
         const consent = this.readConsentFromCookies()
         if (!consent) return true;
 
+        /** se non esiste una versione della policy */
         if (!this.currentPolicyVersion) return true;
-        if (consent.policy_version < this.currentPolicyVersion) return true;
-        const deltaMilliseconds: number = (new Date()).getTime() - consent.date.getTime()
-        if (deltaMilliseconds > (1000 * 60 * 60 * 24 * 180)) return true;
 
+        /** se la policy è stata aggiornata */
+        if (consent.policy_version < this.currentPolicyVersion) return true;
+
+        /** se sono passati i giorni di frequenza di aggironamento */
+        const deltaMilliseconds: number = (new Date()).getTime() - consent.date.getTime()
+        if (deltaMilliseconds > this.frequency) return true;
+
+        /** altrimenti non lo mostra */
         return false;
     }
 
 
+    /**
+     * crea il consenso dalle preferenze scelte dal banner
+     */
     fromPreferenceToConsent(preferences: CookiePreference): Consent {
         let c: Consent = {
             uuid: uuidv4(),

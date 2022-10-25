@@ -5,11 +5,13 @@ import { ConsentCtrl } from "../controllers/";
 import DccOverlay from "./dcc-overlay";
 
 
-type Props = { consentCookieName: string };
 
-const DccApp: React.FC<Props> = ({ consentCookieName }) => {
+
+type Props = { consentCookieName: string; policyVersion: Date; frequency: number };
+
+const DccApp: React.FC<Props> = ({ consentCookieName, policyVersion, frequency }) => {
     const [show, setShow] = useState(false);
-    let main: ConsentCtrl = new ConsentCtrl(consentCookieName, new Date(2022, 10, 23));
+    let main: ConsentCtrl = new ConsentCtrl(consentCookieName, frequency, policyVersion);
 
     useEffect(() => {
         console.log("enablicng DCC");

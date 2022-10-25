@@ -28,10 +28,17 @@ const Banner: React.FC<Props> = ({ onAccept, onChoose }) => {
                         </div>
                         <div id="dcc-banner-text">
                             <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem
-                                harum nam dolor incidunt iste sequi neque <a href="#">quisquam</a>
-                                totam, quia enim et necessitatibus, dolorem consectetur ipsa eveniet
-                                laborum? Illo, deleniti eveniet.
+                                Noi e terze parti selezionate utilizziamo cookie o tecnologie simili
+                                per finalità tecniche e, con il tuo consenso, anche per “interazioni
+                                e funzionalità semplici”, “miglioramento dell'esperienza” e
+                                “misurazione” come specificato nella{" "}
+                                <a href="/policy/cookies">cookie policy</a>. Il rifiuto del consenso
+                                può rendere non disponibili le relative funzioni. Puoi liberamente
+                                prestare, rifiutare o revocare il tuo consenso, in qualsiasi
+                                momento. Usa il pulsante “<strong>Accetta</strong>” per acconsentire
+                                all'utilizzo di tali tecnologie. Usa il pulsante “
+                                <strong>Rifiuta</strong>” o chiudi questa informativa per continuare
+                                senza accettare.
                             </p>
                         </div>
                     </div>

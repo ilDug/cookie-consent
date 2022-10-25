@@ -36,17 +36,24 @@ const Choice: React.FC<Props> = ({ categories, onClose, onAccept }) => {
                             <path d="M315.3 411.3c-6.253 6.253-16.37 6.253-22.63 0L160 278.6l-132.7 132.7c-6.253 6.253-16.37 6.253-22.63 0c-6.253-6.253-6.253-16.37 0-22.63L137.4 256L4.69 123.3c-6.253-6.253-6.253-16.37 0-22.63c6.253-6.253 16.37-6.253 22.63 0L160 233.4l132.7-132.7c6.253-6.253 16.37-6.253 22.63 0c6.253 6.253 6.253 16.37 0 22.63L182.6 256l132.7 132.7C321.6 394.9 321.6 405.1 315.3 411.3z" />
                         </svg>
                     </span>
-                    <h2>Impostazioni dei cookies</h2>
+                    <h2>Preferenze relative al tuo consenso nell'utilizzo dei cookies</h2>
 
-                    <h3>Cookie Usage</h3>
+                    <h3>Impostazioni</h3>
                     <p>
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Provident
-                        consequatur odio id dolorum sint distinctio ducimus quis reprehenderit
-                        doloremque eius enim quae porro perspiciatis, ratione quisquam officia
-                        dolorem deleniti obcaecati! Lorem ipsum dolor sit amet consectetur,
-                        adipisicing elit. Est quibusdam rem iure illum fugiat illo, explicabo minus
-                        ullam! Atque expedita nulla vitae enim assumenda non dolorem accusantium
-                        illo nostrum beatae.
+                        Quando visitate il nosrtro sito web, questo può memorizzare o recuperare
+                        informazioni sul vostro browser, per lo più sotto forma di cookie. Queste
+                        informazioni possono riguardare l'utente, le sue preferenze o il suo
+                        dispositivo e vengono utilizzate principalmente per far funzionare il sito
+                        come ci si aspetta. Di solito le informazioni non identificano direttamente
+                        l'utente, ma possono offrire un'esperienza web più personalizzata. Poiché
+                        rispettiamo il vostro diritto alla privacy, potete scegliere di non
+                        consentire alcuni tipi di cookie. Per saperne di più e gestire le vostre
+                        preferenze, fate clic sulle voci delle diverse categorie. Si noti che il
+                        blocco di alcuni tipi di cookie può influire sulla vostra esperienza del
+                        sito e sui servizi che siamo in grado di offrire. Per ottenere ulteriori
+                        informazioni in merito all'utilità e al funzionamento di tali strumenti di
+                        tracciamento, fai riferimento alla{" "}
+                        <a href="/policy/cookies">cookie policy</a>.
                     </p>
                     <React.Fragment>
                         {Object.entries(cats).map(([name, cat], i) => (
@@ -63,10 +70,12 @@ const Choice: React.FC<Props> = ({ categories, onClose, onAccept }) => {
                     <div className="box">
                         <h4>More Information</h4>
                         <p>
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veritatis est
-                            amet eligendi fugit laboriosam animi, deserunt, accusantium mollitia
-                            assumenda facilis in rem aspernatur sit delectus doloribus quod tenetur
-                            aut? Omnis?
+                            Il seguente pannello ti consente di esprimere le tue preferenze di
+                            consenso alle tecnologie di tracciamento che adottiamo per offrire le
+                            funzionalità e svolgere le attività sotto descritte. Puoi rivedere e
+                            modificare le tue scelte in qualsiasi momento. Tieni presente che il
+                            rifiuto del consenso per una finalità particolare può rendere le
+                            relative funzioni non disponibili.
                         </p>
                     </div>
                 </div>
