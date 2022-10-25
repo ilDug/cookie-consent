@@ -3,6 +3,7 @@ import { CookieCategories, CookiePreference, CookiesCategory } from '../classes'
 import { Consent } from '../classes';
 import { CATEGORIES_DEFAULTS } from '../lib/categories'
 import { v4 as uuidv4 } from 'uuid';
+import { UPDATE_FREQUENCY } from '../config';
 
 
 export class ConsentCtrl {
@@ -31,7 +32,7 @@ export class ConsentCtrl {
     setConsentInCookies(c: Consent): boolean {
         const raw = JSON.stringify(c)
         const b64 = window.btoa((encodeURIComponent(raw)));
-        const x = Cookies.set(this.consentCookieName, b64);
+        const x = Cookies.set(this.consentCookieName, b64, { expires: 180 });
         return !!x;
     }
 
