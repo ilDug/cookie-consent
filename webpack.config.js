@@ -42,7 +42,7 @@ module.exports = {
             //   Popper: ['popper.js', 'default']
         }),
         new MiniCssExtractPlugin({
-            filename: 'styles.css'
+            filename: 'cookie-consent.css'
         })
     ],
 };
