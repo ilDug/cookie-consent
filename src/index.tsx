@@ -2,7 +2,7 @@ import React from "react";
 // import ReactDOM from "react-dom";
 import { createRoot, Root } from "react-dom/client";
 import "./styles/styles.scss";
-
+import { DccOpenEvent } from "./classes";
 import DccApp from "./components/dcc-app";
 import {
     CONSENT_COOKIE_NAME,
@@ -21,7 +21,9 @@ window.onload = async () => {
     if (openLink) {
         openLink.style.cursor = "pointer";
         openLink.addEventListener("click", (e) => {
-            render_dcc(dcc, CONSENT_COOKIE_NAME, POLICY_VERSION, true);
+            e.preventDefault();
+            /** emette l'evento per forzare l'apertura del banner */
+            document.dispatchEvent(DccOpenEvent);
         });
     }
 
@@ -30,12 +32,7 @@ window.onload = async () => {
     // const scriptAttr_ = "[dcc-script]";
 };
 
-function render_dcc(
-    el: HTMLDivElement,
-    consentCookieName: string,
-    policyVersion: Date,
-    force?: boolean
-): Root {
+function render_dcc(el: HTMLDivElement, consentCookieName: string, policyVersion: Date): Root {
     /** creazione del container */
     const root: Root = createRoot(el!);
     root.render(
@@ -43,7 +40,6 @@ function render_dcc(
             consentCookieName={consentCookieName}
             policyVersion={policyVersion}
             frequency={UPDATE_FREQUENCY}
-            force={force}
         />
     );
     return root;

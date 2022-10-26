@@ -1,0 +1,1 @@
+export const DccOpenEvent = new CustomEvent<boolean>("dcc-open");

@@ -9,22 +9,27 @@ type Props = {
     consentCookieName: string;
     policyVersion: Date;
     frequency: number;
-    force?: boolean;
 };
 
-const DccApp: React.FC<Props> = ({
-    consentCookieName,
-    policyVersion,
-    frequency,
-    force = false,
-}) => {
-    const [show, setShow] = useState(force);
+const DccApp: React.FC<Props> = ({ consentCookieName, policyVersion, frequency }) => {
+    const [show, setShow] = useState(false);
     let main: ConsentCtrl = new ConsentCtrl(consentCookieName, frequency, policyVersion);
 
     useEffect(() => {
-        console.log("enablicng DCC-APP");
-        console.log("display forced", force);
-        setShow(main.shouldShowBanner() || force);
+        console.log("open DCC-APP");
+        setShow(main.shouldShowBanner());
+    }, []);
+
+    useEffect(() => {
+        const handleForceOpen = (e) => setShow(true);
+
+        document.addEventListener("dcc-open", handleForceOpen);
+
+        /** quando chiude rimuove l'ascolto del listener */
+        return () => {
+            console.log("removing dcc-open listener");
+            document.removeEventListener("dcc-open", handleForceOpen);
+        };
     }, []);
 
     const handleAccetp = (prefs: CookiePreference | "ALL" | "NONE") => {
