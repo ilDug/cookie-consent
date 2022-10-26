@@ -7,7 +7,7 @@ export type Consent = {
     uuid: string;
 
     /** ip | Che ha fornito il consenso(eventualmente anonimizzato)",*/
-    ip: string;
+    ip?: string;
 
     /** date | Quando è stato fornito il consenso",*/
     date: Date;
@@ -20,6 +20,10 @@ export type Consent = {
 
     /** country | Codice nella Nazione di riferimento",*/
     language: string;
+
+    country?: string;
+
+    timezone?: string;
 
     /** preferences | Preferenze espresse per ogni categoria di cookie",*/
     preferences: CookiePreference

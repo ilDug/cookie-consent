@@ -3,7 +3,7 @@ import { CookieCategories, CookiePreference, CookiesCategory } from '../classes'
 import { Consent } from '../classes';
 import { CATEGORIES_DEFAULTS } from '../lib/categories'
 import { v4 as uuidv4 } from 'uuid';
-import { getBrowserLang } from './utilities';
+import { getBrowserLang, getClientInfo } from './utilities';
 
 
 export class ConsentCtrl {
@@ -109,14 +109,20 @@ export class ConsentCtrl {
     /**
      * crea il consenso dalle preferenze scelte dal banner
      */
-    fromPreferenceToConsent(preferences: CookiePreference): Consent {
+    async fromPreferenceToConsent(preferences: CookiePreference): Promise<Consent> {
+
+        let { ip, country, timezone } = await getClientInfo()
+        // ip = ip.split('.')
+        // ip.pop()
         let c: Consent = {
             uuid: uuidv4(),
-            ip: null,
+            ip: ip,
             date: new Date(),
             url: window.location.href,
             user_agent: window.navigator.userAgent ?? null,
             language: getBrowserLang() ?? null,
+            country: country,
+            timezone: timezone,
             preferences: preferences,
             policy_version: this.currentPolicyVersion,
         }

@@ -41,7 +41,7 @@ const DccApp: React.FC<Props> = ({ consentCookieName, policyVersion, frequency }
         !consentCtrl.shouldShowBanner() && scriptCtrl.activate(consentCtrl.preferences);
     }, []);
 
-    const handleAccetp = (prefs: CookiePreference | "ALL" | "NONE") => {
+    const handleAccetp = async (prefs: CookiePreference | "ALL" | "NONE") => {
         let preferences: CookiePreference = {};
         switch (prefs) {
             case "ALL":
@@ -61,7 +61,7 @@ const DccApp: React.FC<Props> = ({ consentCookieName, policyVersion, frequency }
         }
 
         /** crea l'istanza del consent */
-        let consent = consentCtrl.fromPreferenceToConsent(preferences);
+        let consent = await consentCtrl.fromPreferenceToConsent(preferences);
         console.log(consent);
 
         /** lo salva nei cookies */
