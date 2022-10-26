@@ -3,7 +3,7 @@ import { CookieCategories, CookiePreference, CookiesCategory } from '../classes'
 import { Consent } from '../classes';
 import { CATEGORIES_DEFAULTS } from '../lib/categories'
 import { v4 as uuidv4 } from 'uuid';
-import { UPDATE_FREQUENCY } from '../config';
+import { getBrowserLang } from './utilities';
 
 
 export class ConsentCtrl {
@@ -23,8 +23,6 @@ export class ConsentCtrl {
 
         const raw = decodeURIComponent((window.atob(b64)))
         const consent: Consent = JSON.parse(raw)
-        console.log(consent);
-
         return consent
     }
 
@@ -118,7 +116,7 @@ export class ConsentCtrl {
             date: new Date(),
             url: window.location.href,
             user_agent: window.navigator.userAgent ?? null,
-            language: window.navigator.language ?? null,
+            language: getBrowserLang() ?? null,
             preferences: preferences,
             policy_version: this.currentPolicyVersion,
         }
