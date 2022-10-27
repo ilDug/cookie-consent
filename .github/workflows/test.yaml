@@ -37,10 +37,10 @@ jobs:
 
     strategy:
       matrix:
-        browser: [chrome]
         # browser: [chrome, edge, firefox]
+        browser: [chrome]
 
-    name: Cypress Test on  ${{ matrix.browser }} build
+    name: Cypress Test on  ${{ matrix.browser }} 
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -50,29 +50,15 @@ jobs:
         with:
           node-version: 14
 
-      - name: Build First
-        run: |
-          npm ci
-          npm run build
-          npm run serve:test
+      - name: Install Packages
+        run: npm ci
 
-      # - name: Build First
-      #   run: |
-      #     npm ci
-      #     npm run build
-      #     npm run serve
+      - name: Build 
+        run: npm run build
 
       - name: Cypress run on ${{ matrix.browser }}
-        run: npm run cy:run -- --browser ${{ matrix.browser }}
+        run: npm run cy:ci
 
-        
-        
-        # uses: cypress-io/github-action@v4
-        # with:
-        #   start: npm serve
-        #   # quote the url to be safe against YML parsing surprises
-        #   wait-on: 'http://localhost:8080'
-        #   browser: ${{ matrix.browser }}
 
   # publish:
   #   runs-on: ubuntu-latest
