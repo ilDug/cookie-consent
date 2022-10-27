@@ -9,62 +9,38 @@ on:
 jobs:
 
 
-  # build:
-  #   runs-on: ubuntu-latest
+  build:
+    runs-on: ubuntu-latest
 
-  #   strategy:
-  #     matrix:
-  #       node-version: [14.x, 16.x, 18.x]
+    strategy:
+      matrix:
+        node-version: [14.x, 16.x, 18.x]
 
-  #   name: Node ${{ matrix.node-version }} build
+    name: Node ${{ matrix.node-version }} build
 
-  #   steps:
-  #   - uses: actions/checkout@v3
+    steps:
+    - uses: actions/checkout@v3
 
-  #   - name: Use Node.js ${{ matrix.node-version }}
-  #     uses: actions/setup-node@v3
-  #     with:
-  #       node-version: ${{ matrix.node-version }}
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
 
- 
-  #   - run: npm ci
-  #   - run: npm run build
+    - name: Install Packages
+      run: npm ci
+
+    - name: Build 
+      run: npm run build
     
+  
 
-  # cypress-run:
-  #   # needs: build
-  #   runs-on: ubuntu-latest
-
-
-  #   name: Cypress Test 
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v3
-
-  #     - name: Setup Node
-  #       uses: actions/setup-node@v3
-  #       with:
-  #         node-version: 14
-
-  #     - name: Install Packages
-  #       run: npm ci
-
-  #     - name: Build 
-  #       run: npm run build
-
-  #     - name: Cypress run
-  #       run: npm run cy:ci
-
-
-
-  cypress-2:
-  # needs: build
+  cypress-test:
+    needs: build
     runs-on: ubuntu-latest
     
     strategy:
       matrix:
-        # browser: [chrome, edge, firefox]
-        browser: [chrome]
+        browser: [chrome, edge, firefox]
     
     name: Cypress Test on  ${{ matrix.browser }} 
     steps:

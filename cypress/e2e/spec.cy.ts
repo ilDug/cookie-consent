@@ -1,3 +1,5 @@
+/// <reference types="cypress" />
+
 import { contains } from "cypress/types/jquery"
 
 describe('Cookie test', () => {
