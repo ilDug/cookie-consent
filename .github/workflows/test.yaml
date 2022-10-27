@@ -27,8 +27,8 @@ jobs:
         node-version: ${{ matrix.node-version }}
 
     - name: Build
-      - run: npm ci
-      - run: npm run build
+    - run: npm ci
+    - run: npm run build
     
 
   cypress-run:
@@ -42,11 +42,18 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+        
+      - name: Build
+        uses: actions/setup-node@v3
+        with:
+          node-version: 14
+      - run: npm ci
+      - run: npm run build
 
       - name: Cypress run on ${{ matrix.browser }}
         uses: cypress-io/github-action@v4
         with:
-          start: npm start
+          start: npm serve
           # quote the url to be safe against YML parsing surprises
           wait-on: 'http://localhost:8080'
           browser: ${{ matrix.browser }}
