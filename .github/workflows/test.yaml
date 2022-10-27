@@ -16,7 +16,7 @@ jobs:
       matrix:
         node-version: [14.x, 16.x, 18.x]
 
-    name: Node ${{ matrix.node }} build
+    name: Node ${{ matrix.node-version }} build
 
     steps:
     - uses: actions/checkout@v3
@@ -38,17 +38,32 @@ jobs:
       matrix:
         browser: [chrome, edge, firefox]
 
+    name: Cypress Test on  ${{ matrix.node }} build
     steps:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Cypress run on ${{ matrix.browser }}
-        uses: cypress-io/github-action@v4
+        uses: actions/setup-node@v3
         with:
-          start: npm serve
-          # quote the url to be safe against YML parsing surprises
-          wait-on: 'http://localhost:8080'
-          browser: ${{ matrix.browser }}
+          node-version: 14
+
+      - name: Build First
+        run: |
+          npm ci
+          npm run build
+          npm serve
+
+      - name: Cypress run on ${{ matrix.browser }}
+        run: npm run cy:run -- --browser ${{ matrix.browser }}
+
+        
+        
+        # uses: cypress-io/github-action@v4
+        # with:
+        #   start: npm serve
+        #   # quote the url to be safe against YML parsing surprises
+        #   wait-on: 'http://localhost:8080'
+        #   browser: ${{ matrix.browser }}
 
   # publish:
   #   runs-on: ubuntu-latest
