@@ -1,7 +1,7 @@
 {
     "name": "@ildug/cookie-consent",
-    "version": "2.0.0",
-    "description": "banner for cookies law, and proof oc consent",
+    "version": "2.0.1",
+    "description": "banner for cookies law, and proof of consent",
     "main": "index.js",
     "scripts": {
         "tsc": "tsc",
@@ -21,7 +21,9 @@
     "keywords": [
         "banner",
         "cookies",
-        "privacy"
+        "privacy", 
+        "GDPR", 
+        "consent"
     ],
     "author": "DagTech",
     "license": "MIT",
