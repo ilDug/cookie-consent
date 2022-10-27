@@ -1,0 +1,11 @@
+{
+    "port": 8080,
+    "open": false,
+    "logLevel": "silent",
+    "server": {
+        "middleware": {
+            "0": null
+        },
+        "baseDir": "./"
+    }
+}

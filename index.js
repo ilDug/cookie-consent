@@ -1,1 +1,1 @@
-module.exports = require('./dist/cookie-consent-bundle.js')
+// module.exports = require('./dist/cookie-consent-bundle.js')

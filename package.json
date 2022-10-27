@@ -1,6 +1,6 @@
 {
     "name": "@ildug/cookie-consent",
-    "version": "2.1.0",
+    "version": "2.0.0",
     "description": "banner for cookies law, and proof oc consent",
     "main": "index.js",
     "scripts": {
@@ -10,9 +10,9 @@
         "build": "webpack --config webpack.config.js --mode=production",
         "cy:run": "cypress run",
         "cy:open": "cypress open",
-        "serve": "lite-server",
-        "test": "concurrently \"npm run serve\" \"wait-on http-get://localhost:3000 && npm run cy:run\" --kill-others --success first"
-        
+        "serve": "lite-server -c configs/bs-config-open.json",
+        "serve:test": "lite-server -c configs/bs-config-background.json",
+        "test": "concurrently \"npm run serve:test\" \"wait-on http-get://localhost:8080 && npm run cy:run\" --kill-others --success first"
     },
     "repository": {
         "type": "git",
@@ -48,6 +48,7 @@
         "cypress": "^10.11.0",
         "file-loader": "^6.2.0",
         "lite-server": "^2.6.1",
+        "live-server": "^1.2.2",
         "mini-css-extract-plugin": "^2.6.1",
         "sass": "^1.55.0",
         "sass-loader": "^13.1.0",

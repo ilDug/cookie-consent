@@ -54,7 +54,7 @@ jobs:
         run: |
           npm ci
           npm run build
-          npm run serve -- --open=false
+          npm run serve:test
 
       # - name: Build First
       #   run: |
