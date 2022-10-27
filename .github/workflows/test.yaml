@@ -31,34 +31,33 @@ jobs:
     - run: npm run build
     
 
-  # cypress-run:
-  #   runs-on: ubuntu-latest
+  cypress-run:
+    runs-on: ubuntu-latest
 
-  #   strategy:
-  #     matrix:
-  #       browser: [chrome, edge, firefox]
+    strategy:
+      matrix:
+        browser: [chrome, edge, firefox]
 
-
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v3
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
         
-  #     - name: Node
-  #       uses: actions/setup-node@v3
-  #       with:
-  #         node-version: 14
+      - name: Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 14
       
-  #     - name: Build
-  #     - run: npm ci
-  #     - run: npm run build
+      - name: Build
+      - run: npm ci
+      - run: npm run build
 
-  #     - name: Cypress run on ${{ matrix.browser }}
-  #       uses: cypress-io/github-action@v4
-  #       with:
-  #         start: npm serve
-  #         # quote the url to be safe against YML parsing surprises
-  #         wait-on: 'http://localhost:8080'
-  #         browser: ${{ matrix.browser }}
+      - name: Cypress run on ${{ matrix.browser }}
+        uses: cypress-io/github-action@v4
+        with:
+          start: npm serve
+          # quote the url to be safe against YML parsing surprises
+          wait-on: 'http://localhost:8080'
+          browser: ${{ matrix.browser }}
 
   # publish:
   #   runs-on: ubuntu-latest
