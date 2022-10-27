@@ -31,35 +31,60 @@ jobs:
   #   - run: npm run build
     
 
-  cypress-run:
-    # needs: build
-    runs-on: ubuntu-latest
+  # cypress-run:
+  #   # needs: build
+  #   runs-on: ubuntu-latest
 
+  #   strategy:
+  #     matrix:
+  #       # browser: [chrome, edge, firefox]
+  #       browser: [chrome]
+
+  #   name: Cypress Test on  ${{ matrix.browser }} 
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v3
+
+  #     - name: Setup Node
+  #       uses: actions/setup-node@v3
+  #       with:
+  #         node-version: 14
+
+  #     - name: Install Packages
+  #       run: npm ci
+
+  #     - name: Build 
+  #       run: npm run build
+
+  #     - name: Cypress run on ${{ matrix.browser }}
+  #       run: npm run cy:ci
+
+
+
+  cypress-2:
+  # needs: build
+    runs-on: ubuntu-
+    
     strategy:
       matrix:
         # browser: [chrome, edge, firefox]
         browser: [chrome]
-
+    
     name: Cypress Test on  ${{ matrix.browser }} 
     steps:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Setup Node
-        uses: actions/setup-node@v3
+      # Install NPM dependencies, cache them correctly
+      # and run all Cypress tests
+      - name: Cypress run on  ${{ matrix.browser }} 
+        uses: cypress-io/github-action@v4 # use the explicit version number
         with:
-          node-version: 14
+          build: npm run build
+          start: npm serve:test
+          browser: ${{ matrix.browser }}
 
-      - name: Install Packages
-        run: npm ci
-
-      - name: Build 
-        run: npm run build
-
-      - name: Cypress run on ${{ matrix.browser }}
-        run: npm run cy:ci
-
-
+          
   # publish:
   #   runs-on: ubuntu-latest
 
