@@ -1,5 +1,8 @@
-src/
+configs/
+cypress/
 node_modules/
+src/
+cypress.config.ts
+index.html
 tsconfig.json
 webpack.config.js
-demo.html
