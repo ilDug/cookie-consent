@@ -43,13 +43,21 @@ const Banner: React.FC<Props> = ({ onAccept, onChoose }) => {
                         </div>
                     </div>
                     <div id="dcc-banner-actions">
-                        <a onClick={() => onAccept("ALL")} className="dcc-btn btn-primary">
+                        <a
+                            onClick={() => onAccept("ALL")}
+                            className="dcc-btn btn-primary"
+                            id="dcc-banner-accept-all"
+                        >
                             Accetta Tutto
                         </a>
-                        <a onClick={() => onAccept("NONE")} className="dcc-btn btn-secondary">
+                        <a
+                            onClick={() => onAccept("NONE")}
+                            className="dcc-btn btn-secondary"
+                            id="dcc-banner-refuse-all"
+                        >
                             Rifiuta Tutto
                         </a>
-                        <a onClick={() => onChoose()} className="">
+                        <a onClick={() => onChoose()} className="" id="dcc-banner-open-choice">
                             Personalizza Cookies
                         </a>
                     </div>
