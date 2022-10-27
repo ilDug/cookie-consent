@@ -77,7 +77,7 @@ jobs:
         uses: cypress-io/github-action@v4 # use the explicit version number
         with:
           build: npm run build
-          start: npm serve:test
+          start: npm run serve:test
           browser: ${{ matrix.browser }}
 
 
