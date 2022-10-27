@@ -37,9 +37,10 @@ jobs:
 
     strategy:
       matrix:
-        browser: [chrome, edge, firefox]
+        browser: [chrome]
+        # browser: [chrome, edge, firefox]
 
-    name: Cypress Test on  ${{ matrix.node }} build
+    name: Cypress Test on  ${{ matrix.browser }} build
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -53,7 +54,13 @@ jobs:
         run: |
           npm ci
           npm run build
-          npm serve
+          npm run serve
+
+      # - name: Build First
+      #   run: |
+      #     npm ci
+      #     npm run build
+      #     npm run serve
 
       - name: Cypress run on ${{ matrix.browser }}
         run: npm run cy:run -- --browser ${{ matrix.browser }}
