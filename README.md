@@ -9,15 +9,20 @@ npm install @ildug/cookie-consent
 ```
 
 ## Import 
-Import into each html page the main script.
+Import into each html page the main script andrun main function.
 
 ```html
-<script src="/dist/cookie-consent-bundle.js" ></script>
+<script src="/lib/dcc/cookie-consent-bundle.js" ></script>
+<script>
+    window.onload = async ()=>{
+        window.dcc_init({ selectorId: "dcc-container", });
+    }
+</script>
 ```
 
 as well css styles:
 ```html
- <link rel="stylesheet" href="/dist/cookie-consent.css">
+ <link rel="stylesheet" href="/lib/dcc/cookie-consent.css">
 ```
 
 ## Block Scripts
