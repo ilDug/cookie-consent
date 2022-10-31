@@ -7,7 +7,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
+    <link rel="stylesheet" href="dist/cookie-consent.css">
+    <style>
+        body {
+            background-color: rgb(234, 234, 255);
+            min-height: 200vh;
+            padding: 0;
+            margin: 0;
+        }
 
+        a {
+            cursor: pointer;
+        }
+    </style>
     <base href="/">
     <script src="/index.js" type="text/plain" dcc-script="technical"></script>
 </head>
@@ -25,7 +37,12 @@
         alert("cippa")
     </script>
 
-    <script src="dist/cookie-consent-bundle.js"></script>
+    <script src="dist/cookie-consent-bundle.js" async></script>
+    <script>
+        window.onload = async ()=>{
+            window.dcc_init({ selectorId: "dcc-container", });
+        }
+    </script>
 </body>
 
 
