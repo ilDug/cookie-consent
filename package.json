@@ -8,8 +8,8 @@
         "tscdev": "npm run tsc --watch",
         "dev": "webpack --config webpack.config.js --watch --mode=development",
         "build": "webpack --config webpack.config.js --mode=production",
-        "serve": "lite-server -c configs/bs-config-open.json",
-        "serve:test": "lite-server -c configs/bs-config-background.json",
+        "serve": "lite-server -c configs/lite-server/bs-config-open.json",
+        "serve:test": "lite-server -c configs/lite-server/bs-config-background.json",
         "cy:open": "cypress open",
         "cy:run": "cypress run --browser=chrome",
         "cy:ci": "start-server-and-test serve:test http://localhost:8080 cy:run"
