@@ -10,7 +10,7 @@ import {
 
 
 /** funzione principale */
-export function dcc_init(c: InitialConfigs) {
+export function dcc_init(c: Partial<InitialConfigs>) {
     let cnf: InitialConfigs = { ...CNF, ...c }
 
     console.log(cnf);
@@ -33,9 +33,5 @@ export function dcc_init(c: InitialConfigs) {
 
 /** USAGE ************************************************************ */
 // window.onload = async () => {
-//     console.log("DAG cookie-consent starting...");
-
-//     // dcc_init({
-//     //     selectorId: "dcc-container",
-//     // });
-// };
+//     window.dcc_init({ diplayRejectAllBtn: false });
+// }
