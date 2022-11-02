@@ -1,8 +1,9 @@
 import DccApp from "./components/dcc-app";
-import React from "react";
+import React, { Context } from "react";
 // import ReactDOM from "react-dom";
 import { createRoot, Root } from "react-dom/client";
 import { DccOpenEvent } from "./classes";
+import { InitialConfigs, ConfigsCtx } from "./config";
 
 /**
  * Crea il div dove verrà renderizzata l'applicazione
@@ -22,20 +23,17 @@ export function createContainerElement(selectorId: string) {
  * @param policyVersion
  * @returns
  */
-export function render_dcc(
-    el: HTMLDivElement,
-    consentCookieName: string,
-    policyVersion: Date,
-    frequency: number
-): Root {
+export function render_dcc(el: HTMLDivElement, cnf: InitialConfigs): Root {
     /** creazione del container */
     const root: Root = createRoot(el!);
     root.render(
-        <DccApp
-            consentCookieName={consentCookieName}
-            policyVersion={policyVersion}
-            frequency={frequency}
-        />
+        <ConfigsCtx.Provider value={cnf}>
+            <DccApp
+                consentCookieName={cnf.consentCookieName}
+                policyVersion={cnf.policyVersion}
+                frequency={cnf.updateFrequency}
+            />
+        </ConfigsCtx.Provider>
     );
     return root;
 }

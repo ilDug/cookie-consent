@@ -1,6 +1,7 @@
 import * as React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { CookiePreference } from "../classes";
+import { ConfigsCtx, InitialConfigs } from "../config";
 
 type Props = {
     onAccept: (consent: CookiePreference | "ALL" | "NONE") => void;
@@ -8,6 +9,8 @@ type Props = {
 };
 
 const Banner: React.FC<Props> = ({ onAccept, onChoose }) => {
+    const cnf: InitialConfigs = useContext(ConfigsCtx);
+
     return (
         <React.Fragment>
             <div id="dcc-banner">
@@ -50,14 +53,20 @@ const Banner: React.FC<Props> = ({ onAccept, onChoose }) => {
                         >
                             Accetta Tutto
                         </a>
+                        {cnf.diplayRejectAllBtn && (
+                            <a
+                                onClick={() => onAccept("NONE")}
+                                className="dcc-btn btn-secondary"
+                                id="dcc-banner-refuse-all"
+                            >
+                                Rifiuta Tutto
+                            </a>
+                        )}
                         <a
-                            onClick={() => onAccept("NONE")}
+                            onClick={() => onChoose()}
                             className="dcc-btn btn-secondary"
-                            id="dcc-banner-refuse-all"
+                            id="dcc-banner-open-choice"
                         >
-                            Rifiuta Tutto
-                        </a>
-                        <a onClick={() => onChoose()} className="" id="dcc-banner-open-choice">
                             Personalizza Cookies
                         </a>
                     </div>
