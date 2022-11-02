@@ -15,7 +15,10 @@ Import into each html page the main script andrun main function.
 <script src="/lib/dcc/cookie-consent-bundle.js" ></script>
 <script>
     window.onload = async ()=>{
-        window.dcc_init({ selectorId: "dcc-container", });
+        window.dcc_init({ 
+            /** override default configs*/
+            policyVersion: new Date(2022,10,24) 
+        });
     }
 </script>
 ```
@@ -24,6 +27,19 @@ as well css styles:
 ```html
  <link rel="stylesheet" href="/lib/dcc/cookie-consent.css">
 ```
+### Default configurations
+
+```typescript
+{
+    selectorId: "dcc-container",
+    diplayRejectAllBtn: true,
+    updateFrequency: /** 6 month expressed in milliseconds*/,
+    policyVersion: /** set your policy Date*/,
+    consentCookieName: 'dcc'
+}
+```
+
+
 
 ## Block Scripts
 Any script that can write cookies must be blocked. 
@@ -56,6 +72,8 @@ or
 ### Behaviour
 
 The script run on windows load. Then check if preferences cookie is present. If not, diplay the banner.
+
+
 
 ## Open prefences
 To open consent preferences,  you must place a link with attributes *```dcc-open```*:
