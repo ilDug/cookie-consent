@@ -11,7 +11,8 @@ export type InitialConfigs = {
     diplayRejectAllBtn: boolean,
     updateFrequency: number,
     policyVersion: Date,
-    consentCookieName: string
+    consentCookieName: string,
+    cookiePolicyLink: string
 }
 
 export const CNF: InitialConfigs = {
@@ -19,7 +20,8 @@ export const CNF: InitialConfigs = {
     diplayRejectAllBtn: true,
     updateFrequency: UPDATE_FREQUENCY,
     policyVersion: POLICY_VERSION,
-    consentCookieName: CONSENT_COOKIE_NAME
+    consentCookieName: CONSENT_COOKIE_NAME,
+    cookiePolicyLink: "/policy/cookies"
 }
 
 

@@ -1,4 +1,7 @@
 # cookie-consent
+
+[![build and test](https://github.com/ilDug/cookie-consent/actions/workflows/test.yaml/badge.svg)](https://github.com/ilDug/cookie-consent/actions/workflows/test.yaml) 
+
 banner for cookies law
 
 ## Installation
@@ -17,7 +20,8 @@ Import into each html page the main script andrun main function.
     window.onload = async ()=>{
         window.dcc_init({ 
             /** override default configs*/
-            policyVersion: new Date(2022,10,24) 
+            policyVersion: new Date(2022,10,24),
+            cookiePolicyLink: "/policy/cookies"
         });
     }
 </script>
@@ -35,7 +39,8 @@ as well css styles:
     diplayRejectAllBtn: true,
     updateFrequency: /** 6 month expressed in milliseconds*/,
     policyVersion: /** set your policy Date*/,
-    consentCookieName: 'dcc'
+    consentCookieName: 'dcc',
+    cookiePolicyLink: "/policy/cookies"
 }
 ```
 

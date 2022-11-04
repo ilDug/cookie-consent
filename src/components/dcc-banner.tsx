@@ -32,14 +32,14 @@ const Banner: React.FC<Props> = ({ onAccept, onChoose }) => {
                         <div id="dcc-banner-text">
                             <p>
                                 Noi e terze parti selezionate utilizziamo cookie o tecnologie simili
-                                per finalità tecniche e, con il tuo consenso, anche per “interazioni
-                                e funzionalità semplici”, “miglioramento dell'esperienza” e
-                                “misurazione” come specificato nella{" "}
-                                <a href="/policy/cookies">cookie policy</a>. Il rifiuto del consenso
-                                può rendere non disponibili le relative funzioni. Puoi liberamente
-                                prestare, rifiutare o revocare il tuo consenso, in qualsiasi
-                                momento. Usa il pulsante “<strong>Accetta</strong>” per acconsentire
-                                all'utilizzo di tali tecnologie. Usa il pulsante “
+                                per finalità tecniche e, con il tuo consenso, anche per
+                                “funzionalità semplici e preferenze”, “Performance e Statistica” ,
+                                "marketing e targeting" e “social media” come specificato nella{" "}
+                                <a href={cnf.cookiePolicyLink}>cookie policy</a>. Il rifiuto del
+                                consenso può rendere non disponibili le relative funzioni. Puoi
+                                liberamente prestare, rifiutare o revocare il tuo consenso, in
+                                qualsiasi momento. Usa il pulsante “<strong>Accetta</strong>” per
+                                acconsentire all'utilizzo di tali tecnologie. Usa il pulsante “
                                 <strong>Rifiuta</strong>” o chiudi questa informativa per continuare
                                 senza accettare.
                             </p>
