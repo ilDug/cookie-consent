@@ -31,6 +31,7 @@ export function dcc_init(c: Partial<InitialConfigs>) {
 
 
 
+
 /** USAGE ************************************************************ */
 // window.onload = async () => {
 //     window.dcc_init({ diplayRejectAllBtn: false });

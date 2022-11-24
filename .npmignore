@@ -1,7 +1,7 @@
+.github/
 configs/
 cypress/
 node_modules/
-src/
 cypress.config.ts
 index.html
 tsconfig.json

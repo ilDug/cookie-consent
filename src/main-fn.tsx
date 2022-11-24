@@ -3,7 +3,7 @@ import React, { Context } from "react";
 // import ReactDOM from "react-dom";
 import { createRoot, Root } from "react-dom/client";
 import { DccOpenEvent } from "./classes";
-import { InitialConfigs, ConfigsCtx } from "./config";
+import { InitialConfigs, ConfigsCtx, CNF, OPEN_LINK_SELECTOR } from "./config";
 
 /**
  * Crea il div dove verrà renderizzata l'applicazione
@@ -50,3 +50,5 @@ export function listen_open_link(selector: string) {
         });
     }
 }
+
+

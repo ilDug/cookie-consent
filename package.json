@@ -1,8 +1,8 @@
 {
     "name": "@ildug/cookie-consent",
-    "version": "2.1.1",
+    "version": "2.1.2",
     "description": "banner for cookies law, and proof of consent",
-    "main": "index.js",
+    "main": "index.ts",
     "scripts": {
         "tsc": "tsc",
         "tscdev": "npm run tsc --watch",
