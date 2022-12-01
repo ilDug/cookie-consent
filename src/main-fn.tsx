@@ -4,6 +4,7 @@ import React, { Context } from "react";
 import { createRoot, Root } from "react-dom/client";
 import { DccOpenEvent } from "./classes";
 import { InitialConfigs, ConfigsCtx, CNF, OPEN_LINK_SELECTOR } from "./config";
+import { ConsentCtrl } from "./controllers";
 
 /**
  * Crea il div dove verrà renderizzata l'applicazione
@@ -18,21 +19,13 @@ export function createContainerElement(selectorId: string) {
 
 /**
  * render root
- * @param el
- * @param consentCookieName
- * @param policyVersion
- * @returns
  */
-export function render_dcc(el: HTMLDivElement, cnf: InitialConfigs): Root {
+export function render_dcc(el: HTMLDivElement, consentCtrl: ConsentCtrl, cnf: InitialConfigs): Root {
     /** creazione del container */
     const root: Root = createRoot(el!);
     root.render(
         <ConfigsCtx.Provider value={cnf}>
-            <DccApp
-                consentCookieName={cnf.consentCookieName}
-                policyVersion={cnf.policyVersion}
-                frequency={cnf.updateFrequency}
-            />
+            <DccApp consentCtrl={consentCtrl} />
         </ConfigsCtx.Provider>
     );
     return root;

@@ -6,14 +6,11 @@ import { ConsentCtrl, ScriptsCtrl } from "../controllers/";
 import DccOverlay from "./dcc-overlay";
 
 type Props = {
-    consentCookieName: string;
-    policyVersion: Date;
-    frequency: number;
+    consentCtrl: ConsentCtrl
 };
 
-const DccApp: React.FC<Props> = ({ consentCookieName, policyVersion, frequency }) => {
+const DccApp: React.FC<Props> = ({ consentCtrl }) => {
     const [show, setShow] = useState(false);
-    const consentCtrl: ConsentCtrl = new ConsentCtrl(consentCookieName, frequency, policyVersion);
     const scriptCtrl = new ScriptsCtrl(SCRIPT_SELECTOR);
 
     /** verifica se mostrare il banner */

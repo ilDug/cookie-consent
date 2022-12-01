@@ -4,15 +4,20 @@ import { Consent } from '../classes';
 import { CATEGORIES_DEFAULTS } from '../lib/categories'
 import { v4 as uuidv4 } from 'uuid';
 import { getBrowserLang } from './utilities';
+import { InitialConfigs } from '../config';
 
 
 export class ConsentCtrl {
-    constructor(
-        public consentCookieName: string,
-        public frequency: number,
-        public currentPolicyVersion?: Date
+    constructor(cnf: InitialConfigs
     ) {
+        this.consentCookieName = cnf.consentCookieName
+        this.frequency = cnf.updateFrequency
+        this.currentPolicyVersion = cnf.policyVersion
     }
+    public consentCookieName: string;
+    public frequency: number;
+    public currentPolicyVersion: Date
+
 
     /**
      * legge lo stato i consensi salvato nei cookies.
@@ -33,6 +38,8 @@ export class ConsentCtrl {
         const x = Cookies.set(this.consentCookieName, b64, { expires: 180 });
         return !!x;
     }
+
+
 
 
     /**

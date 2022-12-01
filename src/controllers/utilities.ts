@@ -1,3 +1,5 @@
+import Cookies from "js-cookie";
+
 /**
  * Get current client's browser language
  * @returns {string}

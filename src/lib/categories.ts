@@ -9,19 +9,19 @@ export const CATEGORIES_DEFAULTS: CookieCategories = {
     },
     "functional": {
         title: "Funzionali / Preferenze",
-        description: "Questi cookie consentono al sito web di fornire funzionalità e personalizzazioni avanzate. Possono essere impostati da noi o da fornitori terzi i cui servizi sono stati aggiunti alle nostre pagine. Se non si accettano questi cookie, alcuni o tutti i servizi potrebbero non funzionare correttamente. [ed es: Contattare l’Utente, Gestione delle richieste di supporto e contatto, Gestione dei database di Utenti, Commento dei contenuti, Interazione con piattaforme di raccolta dati e altre terze parti, Visualizzazione di contenuti da piattaforme esterne]",
+        description: "Questi cookie consentono al sito web di fornire funzionalità e personalizzazioni avanzate. Possono essere impostati da noi o da fornitori terzi i cui servizi sono stati aggiunti alle nostre pagine. Se non si accettano questi cookie, alcuni o tutti i servizi potrebbero non funzionare correttamente. [ed es: Contattare l’Utente, Gestione delle richieste di supporto e contatto, Gestione dei database di Utenti, Commento dei contenuti, Interazione con piattaforme di raccolta dati e altre terze parti, Visualizzazione di contenuti da piattaforme esterne.]",
         consent: false,
         editable: true
     },
-    "performance": {
-        title: "Performance / Statistica",
-        description: "Questi cookie ci permettono di contare le visite e le fonti di traffico per poter misurare e migliorare le prestazioni del nostro sito, e per la gestione della raccolta dati e dei sondaggi online. Ci aiutano a sapere quali sono le pagine più e meno popolari e a vedere come i visitatori si muovono all'interno del sito, il che ci aiuta a ottimizzare la vostra esperienza.,  sia da noi che da terze parti. Se non consentite questi cookie, non potremo utilizzare i vostri dati in questo modo.",
-        consent: false,
-        editable: true
-    },
+    // "performance": {
+    //     title: "Performance / Statistica",
+    //     description: "Questi cookie ci permettono di contare le visite e le fonti di traffico per poter misurare e migliorare le prestazioni del nostro sito, e per la gestione della raccolta dati e dei sondaggi online. Ci aiutano a sapere quali sono le pagine più e meno popolari e a vedere come i visitatori si muovono all'interno del sito, il che ci aiuta a ottimizzare la vostra esperienza.,  sia da noi che da terze parti. Se non consentite questi cookie, non potremo utilizzare i vostri dati in questo modo.",
+    //     consent: false,
+    //     editable: true
+    // },
     "targeting": {
-        title: "Marketing / targeting",
-        description: "Questi cookie possono essere impostati attraverso il nostro sito dai nostri partner pubblicitari. Possono essere utilizzati da tali aziende per creare un profilo dei vostri interessi e mostrarvi pubblicità pertinenti su altri siti. Si basano sull'identificazione univoca del vostro browser e del vostro dispositivo internet. Se non si consente l'utilizzo di questi cookie, la pubblicità sarà meno mirata.[Pubblicità , Infrastruttura al servizio pubblicitario , Affiliazione commerciale , Gestione contatti e invio di messaggi , Remarketing e behavioral targeting]",
+        title: "Analytics / Targeting / Marketing",
+        description: "Questi cookie possono essere impostati attraverso il nostro sito dai nostri partner pubblicitari. Possono essere utilizzati da tali aziende per creare un profilo dei vostri interessi e mostrarvi pubblicità pertinenti su altri siti. Si basano sull'identificazione univoca del vostro browser e del vostro dispositivo internet. Ci aiutano a sapere quali sono le pagine più e meno popolari e a vedere come i visitatori si muovono all'interno del sito, il che ci aiuta a ottimizzare la vostra esperienza.,  sia da noi che da terze parti. Se non consentite questi cookie, non potremo utilizzare i vostri dati in questo modo e la pubblicità sarà meno mirata.[Analytics, Statistica, Gmap, Pubblicità , Infrastruttura al servizio pubblicitario , Affiliazione commerciale , Gestione contatti e invio di messaggi , Remarketing e behavioral targeting.",
         consent: false,
         editable: true
     },

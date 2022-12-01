@@ -4,7 +4,7 @@ const webpack = require('webpack');
 // const sass = require('sass');
 
 module.exports = {
-    entry: './src/index',
+    entry: './src/package',
     module: {
         rules: [
             {
