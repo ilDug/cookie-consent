@@ -33,15 +33,13 @@ export function render_dcc(el: HTMLDivElement, consentCtrl: ConsentCtrl, cnf: In
 
 /** aggiunge un listener al link per aprile il banner */
 export function listen_open_link(selector: string) {
-    const openLink: HTMLAnchorElement = document.querySelector(selector);
-    if (openLink) {
-        openLink.style.cursor = "pointer";
-        openLink.addEventListener("click", (e) => {
+    const openLinks: HTMLAnchorElement[] = [...document.querySelectorAll(selector)] as HTMLAnchorElement[];
+    openLinks.forEach(l => {
+        l.style.cursor = "pointer";
+        l.addEventListener("click", (e) => {
             e.preventDefault();
             /** emette l'evento per forzare l'apertura del banner */
             document.dispatchEvent(DccOpenEvent);
         });
-    }
+    })
 }
-
-
