@@ -20,8 +20,8 @@ Import into each html page the main script andrun main function.
     window.onload = async ()=>{
         window.dcc_init({ 
             /** override default configs*/
-            policyVersion: new Date(2022,10,24),
-            cookiePolicyLink: "/policy/cookies"
+            policyVersion: new Date("2022-10-24"),
+            cookiePolicyLink: "/privacy/cookies"
         });
     }
 </script>
@@ -40,7 +40,7 @@ as well css styles:
     updateFrequency: /** 6 month expressed in milliseconds*/,
     policyVersion: /** set your policy Date*/,
     consentCookieName: 'dcc',
-    cookiePolicyLink: "/policy/cookies"
+    cookiePolicyLink: "/privacy/cookies"
 }
 ```
 
