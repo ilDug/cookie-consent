@@ -1,36 +1,40 @@
 # cookie-consent
 
-[![build and test](https://github.com/ilDug/cookie-consent/actions/workflows/test.yaml/badge.svg)](https://github.com/ilDug/cookie-consent/actions/workflows/test.yaml) 
+[![build and test](https://github.com/ilDug/cookie-consent/actions/workflows/test.yaml/badge.svg)](https://github.com/ilDug/cookie-consent/actions/workflows/test.yaml)
 
 banner for cookies law
 
 ## Installation
+
 install via npm package manager.
 
 ```bash
 npm install @ildug/cookie-consent
 ```
 
-## Import 
+## Import
+
 Import into each html page the main script andrun main function.
 
 ```html
-<script src="/lib/dcc/cookie-consent-bundle.js" ></script>
+<script src="/lib/dcc/cookie-consent-bundle.js"></script>
 <script>
-    window.onload = async ()=>{
-        window.dcc_init({ 
+    window.onload = async () => {
+        window.dcc_init({
             /** override default configs*/
             policyVersion: new Date("2022-10-24"),
-            cookiePolicyLink: "/privacy/cookies"
+            cookiePolicyLink: "/privacy/cookies",
         });
-    }
+    };
 </script>
 ```
 
 as well css styles:
+
 ```html
- <link rel="stylesheet" href="/lib/dcc/cookie-consent.css">
+<link rel="stylesheet" href="/lib/dcc/cookie-consent.css" />
 ```
+
 ### Default configurations
 
 ```typescript
@@ -44,51 +48,61 @@ as well css styles:
 }
 ```
 
-
-
 ## Block Scripts
-Any script that can write cookies must be blocked. 
+
+Any script that can write cookies must be blocked.
 
 STEP1: replace type.
 
-- Simply replace attribute *text/javascript*  with *text/plain*
+-   Simply replace attribute _text/javascript_ with _text/plain_
 
 STEP2: bind to a selected categories.
 
 There is some main categories that the user can be select as preferences:
- - technical **(always active)**
- - functional
- - performance
- - targeting
- - social
 
-Add attribute ```dcc``` to each blocked script in order to apply the user preferences.
+-   technical **(always active)**
+-   functional
+-   performance
+-   targeting
+-   social
+
+Add attribute `dcc` to each blocked script in order to apply the user preferences.
 Example:
+
 ```html
-    <script src="/my-script.js" type="text/plain" dcc-script="technical"></script>
+<script src="/my-script.js" type="text/plain" dcc-script="technical"></script>
 
 or
 
-    <script type="text/plain" dcc-script="functional">
-        alert("Hello World")
-    </script>
+<script type="text/plain" dcc-script="functional">
+    alert("Hello World")
+</script>
 ```
 
 ### Behaviour
 
 The script run on windows load. Then check if preferences cookie is present. If not, diplay the banner.
 
-
-
 ## Open prefences
-To open consent preferences,  you must place a link with attributes *```dcc-open```*:
+
+To open consent preferences, you must place a link with attributes _`dcc-open`_:
+
 ```html
 <p>
     <a href="#" dcc-open>opens cookie settings</a>
 </p>
 ```
 
+## Listen save event
+
+After you savedyour consent you can run any other task by listening for the DccSaveEvent.
+
+```javascript
+document.addEventListener("dcc-save", (e) => {
+    console.log("Consent saved");
+})
+```
 
 ## Configuration and prefences
-TO DO.
 
+TO DO.

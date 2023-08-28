@@ -4,6 +4,7 @@ import { CookiePreference } from "../classes";
 import { SCRIPT_SELECTOR } from "../config";
 import { ConsentCtrl, ScriptsCtrl } from "../controllers/";
 import DccOverlay from "./dcc-overlay";
+import { DccSaveEvent } from '../events';
 
 type Props = {
     consentCtrl: ConsentCtrl
@@ -15,7 +16,6 @@ const DccApp: React.FC<Props> = ({ consentCtrl }) => {
 
     /** verifica se mostrare il banner */
     useEffect(() => {
-        console.log("open DCC-APP");
         setShow(consentCtrl.shouldShowBanner());
     }, []);
 
@@ -27,14 +27,13 @@ const DccApp: React.FC<Props> = ({ consentCtrl }) => {
 
         /** quando chiude rimuove l'ascolto del listener */
         return () => {
-            console.log("removing dcc-open listener");
             document.removeEventListener("dcc-open", handleForceOpen);
         };
     }, []);
 
     /** abilita gli scripts all'avvio se le preferenze sono già salvate */
     useEffect(() => {
-        console.log("activate scripts on saved consent preferences");
+        console.log("activating scripts on saved consent preferences");
         !consentCtrl.shouldShowBanner() && scriptCtrl.activate(consentCtrl.preferences);
     }, []);
 
@@ -66,8 +65,11 @@ const DccApp: React.FC<Props> = ({ consentCtrl }) => {
 
         /** chiude il banner */
         setShow(false);
-        console.log("activate scrpits on giving consent ");
+        console.log("activate scripts on giving consent ");
         scriptCtrl.activate(consentCtrl.preferences);
+
+        /** emette  l'evento di salvataggio */
+        document.dispatchEvent(DccSaveEvent);
     };
 
     return (

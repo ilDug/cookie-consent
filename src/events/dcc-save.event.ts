@@ -1,0 +1,1 @@
+export const DccSaveEvent = new CustomEvent<boolean>("dcc-save");

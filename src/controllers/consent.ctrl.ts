@@ -1,7 +1,7 @@
 import Cookies from 'js-cookie';
-import { CookieCategories, CookiePreference, CookiesCategory } from '../classes';
+import { CookieCategories, CookiePreference } from '../classes';
 import { Consent } from '../classes';
-import { CATEGORIES_DEFAULTS } from '../lib/categories'
+import { CATEGORIES_DEFAULTS } from '../../lib/categories'
 import { v4 as uuidv4 } from 'uuid';
 import { getBrowserLang } from './utilities';
 import { InitialConfigs } from '../config';

@@ -1,5 +1,3 @@
-import { CookieCategories } from "./cookies-category"
-
 export type CookiePreference = { [category: string]: boolean }
 
 export type Consent = {

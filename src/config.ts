@@ -1,4 +1,4 @@
-import { createContext, useContext, Context } from 'react'
+import { createContext, Context } from 'react'
 
 export const CONSENT_COOKIE_NAME = "dcc"
 export const POLICY_VERSION: Date = new Date()

@@ -1,7 +1,6 @@
 import * as React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { CookieCategories, CookiePreference } from "../classes";
-import { ConsentCtrl } from "../controllers/";
 import Banner from "./dcc-banner";
 import Choice from "./dcc-choice";
 

@@ -1,7 +1,6 @@
 import * as React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { CookieCategories, CookiePreference } from "../classes";
-import { CATEGORIES_DEFAULTS } from "../lib/categories";
 import CookieCategory from "./choice/cookie-category";
 
 type Props = {
@@ -40,7 +39,7 @@ const Choice: React.FC<Props> = ({ categories, onClose, onAccept }) => {
 
                     <h3>Impostazioni</h3>
                     <p>
-                        Quando visitate il nosrtro sito web, questo può memorizzare o recuperare
+                        Quando visitate il nostro sito web, questo può memorizzare o recuperare
                         informazioni sul vostro browser, per lo più sotto forma di cookie. Queste
                         informazioni possono riguardare l'utente, le sue preferenze o il suo
                         dispositivo e vengono utilizzate principalmente per far funzionare il sito

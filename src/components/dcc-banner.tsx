@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState, useEffect, useContext } from "react";
+import { useContext } from "react";
 import { CookiePreference } from "../classes";
 import { ConfigsCtx, InitialConfigs } from "../config";
 
