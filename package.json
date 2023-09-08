@@ -1,6 +1,6 @@
 {
     "name": "@ildug/cookie-consent",
-    "version": "3.1.0",
+    "version": "3.1.1",
     "description": "banner for cookies law, and proof of consent",
     "main": "index.ts",
     "scripts": {
