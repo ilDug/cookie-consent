@@ -1,6 +1,7 @@
 import { CookiePreference } from './src/classes';
 import { InitialConfigs, CNF, OPEN_LINK_SELECTOR, ConfigsCtx } from './src/config';
 import { ConsentCtrl } from './src/controllers';
+import React from 'react';
 import { createRoot, Root } from "react-dom/client";
 import DccApp from "./src/components/dcc-app";
 import { DccOpenEvent } from './src/events';
